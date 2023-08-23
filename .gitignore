@@ -1,1 +1,4 @@
 /vcpkg-cache
+vcpkg-cache-http
+*.swo
+*.swp

@@ -31,12 +31,12 @@ $ vcpkg-cache-http
 2023-07-12T17:37:14Z INF start server addr=0.0.0.0:15151
 ```
 
-Set *vcpkg* binary source as `http,http://localhost:15151/{name}/{version}/{sha},readwrite`.
+Set *vcpkg* binary source as `http,http://localhost:15151/{triplet}/{name}/{version}/{sha},readwrite`.
 It can be set to environment variable `VCPKG_BINARY_SOURCES` or passed by *vcpkg* command with `--binarysource` flag.
 Please see *vcpkg* official document about [Binary Caching](https://learn.microsoft.com/en-us/vcpkg/users/binarycaching) for details.
 
 ```sh
-$ vcpkg install --binarysource="http,http://localhost:15151/{name}/{version}/{sha},readwrite" zlib
+$ vcpkg install --binarysource="http,http://localhost:15151/{triplet}/{name}/{version}/{sha},readwrite" zlib
 Computing installation plan...
 The following packages will be built and installed:
     zlib:x64-linux -> 1.2.13

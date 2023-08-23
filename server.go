@@ -83,8 +83,8 @@ func (w *responseWriter) WriteHeader(statusCode int) {
 }
 
 func (s *Handler) parseDescription(res http.ResponseWriter, req *http.Request) (Description, error) {
-	entries := strings.SplitN(req.URL.Path[1:], "/", 4)
-	if len(entries) != 3 {
+	entries := strings.SplitN(req.URL.Path[1:], "/", 5)
+	if len(entries) != 4 {
 		res.WriteHeader(http.StatusNotFound)
 		return Description{}, errors.New("invalid path")
 	}
@@ -101,9 +101,10 @@ func (s *Handler) parseDescription(res http.ResponseWriter, req *http.Request) (
 	}
 
 	return Description{
-		Name:    entries[0],
-		Version: entries[1],
-		Hash:    entries[2],
+        Triplet: entries[0],
+		Name:    entries[1],
+		Version: entries[2],
+		Hash:    entries[3],
 	}, nil
 }
 
@@ -132,6 +133,7 @@ func (s *Handler) ServeHTTP(r http.ResponseWriter, req *http.Request) {
 	}
 
 	l.Info().
+		Str("triplet", desc.Triplet).
 		Str("name", desc.Name).
 		Str("version", desc.Version).
 		Str("hash", desc.Hash).

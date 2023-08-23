@@ -9,7 +9,7 @@ import (
 )
 
 func fsStoreDefaultResolve(desc Description) string {
-	return filepath.Join(desc.Name, desc.Version, desc.Hash)
+	return filepath.Join(desc.Triplet, desc.Name, desc.Version, desc.Hash)
 }
 
 type fsStore struct {

@@ -12,6 +12,7 @@ import (
 )
 
 var DescriptionFoo = main.Description{
+    Triplet: "x64-linux",
 	Name:    "foo",
 	Version: "bar",
 	Hash:    "baz",

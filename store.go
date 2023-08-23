@@ -7,13 +7,14 @@ import (
 )
 
 type Description struct {
+    Triplet string
 	Name    string
 	Version string
 	Hash    string
 }
 
 func (d *Description) String() string {
-	return fmt.Sprintf("/%s/%s/%s", d.Name, d.Version, d.Hash)
+	return fmt.Sprintf("/%s/%s/%s/%s", d.Triplet, d.Name, d.Version, d.Hash)
 }
 
 type Store interface {
